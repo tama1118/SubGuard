@@ -180,17 +180,28 @@ f"{format_yen(sub.monthly_jpy())}/月換算"
     return "\n".join(lines)
 
 
+from urllib import request, error
+
 def send_discord(webhook_url: str, content: str) -> None:
     payload = json.dumps({"content": content}).encode("utf-8")
     req = request.Request(
-        webhook_url,
+        webhook_url.strip(),
         data=payload,
         headers={"Content-Type": "application/json"},
         method="POST",
     )
-    with request.urlopen(req) as resp:
-        if resp.status >= 300:
-            raise RuntimeError(f"Discord webhook failed: {resp.status}")
+    try:
+        with request.urlopen(req) as resp:
+            print("Discord status:", resp.status)
+            body = resp.read().decode("utf-8", errors="ignore")
+            print("Discord response body:", body)
+    except error.HTTPError as e:
+        print("Discord status:", e.code)
+        try:
+            body = e.read().decode("utf-8", errors="ignore")
+            print("Discord error body:", body)
+        except Exception:
+            print("Discord error body: <unreadable>")
 
 
 def main() -> None:
