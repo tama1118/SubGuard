@@ -71,4 +71,41 @@
     "cycle": "monthly",
     "category": "ゲーム"
   }
+,
+{
+  "date": "2026-03-01",
+  "action": "subscribe",
+  "service": "VRChat Plus (Meta)",
+  "price": 1000,
+  "currency": "JPY",
+  "cycle": "monthly",
+  "category": "VR"
+},
+{
+  "date": "2026-03-01",
+  "action": "subscribe",
+  "service": "VRChat Plus (Gift/Steam)",
+  "price": 1560,
+  "currency": "JPY",
+  "cycle": "monthly",
+  "category": "VR"
+},
+{
+  "date": "2026-03-01",
+  "action": "subscribe",
+  "service": "fantia",
+  "price": 2000,
+  "currency": "JPY",
+  "cycle": "monthly",
+  "category": "動画"
+},
+{
+  "date": "2026-03-01",
+  "action": "subscribe",
+  "service": "fanbox",
+  "price": 2000,
+  "currency": "JPY",
+  "cycle": "monthly",
+  "category": "動画"
+}
 ]
