@@ -156,8 +156,7 @@ def build_report(events: List[Dict[str, Any]], target: date) -> str:
             original = f"{sub.price} {sub.currency}/{sub.cycle}"
             lines.append(
                 f"- {sub.service}: "
-                f"{format_yen(sub.monthly_jpy())}/月換算 / "
-                f"{format_yen(sub.yearly_jpy())}/年概算 "
+f"{format_yen(sub.monthly_jpy())}/月換算"
                 f"({original}, {sub.category})"
             )
     else:
