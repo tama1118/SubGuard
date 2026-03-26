@@ -142,6 +142,10 @@ def build_report(events: List[Dict[str, Any]], target: date) -> str:
     monthly_total, planned_until_dec, annual_forecast = calculate_projection(active, target)
     ytd_actual = calculate_year_to_date_actual(events, target)
 
+    category_totals: Dict[str, Decimal] = {}
+    for sub in active.values():
+        category_totals[sub.category] = category_totals.get(sub.category, Decimal("0")) + sub.monthly_jpy()
+
     lines: List[str] = []
     lines.append(f"📡 SubGuard レポート ({target.year}-{target.month:02d})")
     lines.append("")
@@ -151,7 +155,9 @@ def build_report(events: List[Dict[str, Any]], target: date) -> str:
         for sub in sorted(active.values(), key=lambda x: x.monthly_jpy(), reverse=True):
             original = f"{sub.price} {sub.currency}/{sub.cycle}"
             lines.append(
-                f"- {sub.service}: {format_yen(sub.monthly_jpy())}/月換算 "
+                f"- {sub.service}: "
+                f"{format_yen(sub.monthly_jpy())}/月換算 / "
+                f"{format_yen(sub.yearly_jpy())}/年概算 "
                 f"({original}, {sub.category})"
             )
     else:
@@ -160,6 +166,11 @@ def build_report(events: List[Dict[str, Any]], target: date) -> str:
     lines.append("")
     lines.append("■ 合計")
     lines.append(f"- 月額換算合計: {format_yen(monthly_total)}")
+
+    lines.append("")
+    lines.append("■ カテゴリ別合計（月額換算）")
+    for category, total in sorted(category_totals.items(), key=lambda x: x[1], reverse=True):
+        lines.append(f"- {category}: {format_yen(total)}")
 
     lines.append("")
     lines.append("■ 年間")
