@@ -5,8 +5,8 @@ import os
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 from decimal import Decimal, ROUND_HALF_UP
-from typing import Any, Dict, List, Optional
-from urllib import request
+from typing import Any, Dict, List
+from urllib import request, error
 
 
 USD_TO_JPY = Decimal("150")
@@ -156,8 +156,8 @@ def build_report(events: List[Dict[str, Any]], target: date) -> str:
             original = f"{sub.price} {sub.currency}/{sub.cycle}"
             lines.append(
                 f"- {sub.service}: "
-f"{format_yen(sub.monthly_jpy())}/月換算"
-                f"({original}, {sub.category})"
+                f"{format_yen(sub.monthly_jpy())}/月換算"
+                f" ({original}, {sub.category})"
             )
     else:
         lines.append("- なし")
@@ -180,14 +180,15 @@ f"{format_yen(sub.monthly_jpy())}/月換算"
     return "\n".join(lines)
 
 
-from urllib import request, error
-
 def send_discord(webhook_url: str, content: str) -> None:
     payload = json.dumps({"content": content}).encode("utf-8")
     req = request.Request(
         webhook_url.strip(),
         data=payload,
-        headers={"Content-Type": "application/json"},
+        headers={
+            "Content-Type": "application/json",
+            "User-Agent": "Mozilla/5.0",
+        },
         method="POST",
     )
     try:
