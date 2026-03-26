@@ -2,6 +2,24 @@
   {
     "date": "2026-03-01",
     "action": "subscribe",
+    "service": "Spotify (docomo)",
+    "price": 980,
+    "currency": "JPY",
+    "cycle": "monthly",
+    "category": "音楽"
+  },
+  {
+    "date": "2026-03-01",
+    "action": "subscribe",
+    "service": "Amazon Prime",
+    "price": 5900,
+    "currency": "JPY",
+    "cycle": "yearly",
+    "category": "総合"
+  },
+  {
+    "date": "2026-03-01",
+    "action": "subscribe",
     "service": "ChatGPT Plus",
     "price": 20,
     "currency": "USD",
@@ -9,12 +27,48 @@
     "category": "AI"
   },
   {
-    "date": "2026-03-05",
+    "date": "2026-03-01",
     "action": "subscribe",
-    "service": "Amazon Prime",
-    "price": 5900,
+    "service": "Yahoo!プレミアム",
+    "price": 508,
     "currency": "JPY",
-    "cycle": "yearly",
-    "category": "Shopping"
+    "cycle": "monthly",
+    "category": "総合"
+  },
+  {
+    "date": "2026-03-01",
+    "action": "subscribe",
+    "service": "YouTube Premium (Google)",
+    "price": 1280,
+    "currency": "JPY",
+    "cycle": "monthly",
+    "category": "動画"
+  },
+  {
+    "date": "2026-03-01",
+    "action": "subscribe",
+    "service": "FF14",
+    "price": 1628,
+    "currency": "JPY",
+    "cycle": "monthly",
+    "category": "ゲーム"
+  },
+  {
+    "date": "2026-03-01",
+    "action": "subscribe",
+    "service": "dアニメストア",
+    "price": 550,
+    "currency": "JPY",
+    "cycle": "monthly",
+    "category": "動画"
+  },
+  {
+    "date": "2026-03-01",
+    "action": "subscribe",
+    "service": "モンスト モンパス",
+    "price": 480,
+    "currency": "JPY",
+    "cycle": "monthly",
+    "category": "ゲーム"
   }
 ]
